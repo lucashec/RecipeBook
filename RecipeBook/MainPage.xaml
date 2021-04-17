@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local ="clr-namespace:RecipeBook" 
+             xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="RecipeBook.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="36"/>
+        </Grid.ColumnDefinitions>
+
+        <ff:SvgCachedImage Margin="-16,-160,-60, 0" Source="resource://RecipeBook.topshape.svg" HeightRequest="400" VerticalOptions="Start" Aspect="AspectFill" Grid.RowSpan="2"/>
+        <Label Margin="32,0, 16,0" Text="Receitas" VerticalOptions="Center" VerticalTextAlignment="Center" TextColor="{StaticResource app_title}" FontSize="34" FontAttributes="Bold"/>
+
+       <!-- <Button Text="{x:Static local:IconFont.search}" FontFamily="Cooking" CornerRadius="18" Margin="-20,10,0,16" Grid.Column="1" VerticalOptions="End"  HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource white}"/> -->
+
+        <CollectionView Grid.Row="1" Grid.ColumnSpan="2">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+        
+        <CollectionView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding .}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="16,0,0,0">
+                        <yummy:PancakeView CornerRadius="30">
+                            <Grid HeightRequest="400" Margin="8, 0, 20 ,16 ">
+                                <Grid.RowDefinitions>
+                             <RowDefinition Height="*"/>
+                             <RowDefinition Height="80"/>
+                          </Grid.RowDefinitions>
+
+                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" Grid.RowSpan="2"/>
+
+                                <sharpnado:MaterialFrame Grid.Row="1" MaterialBlurStyle="Light"/>
+
+                          <Label Grid.Row="1" Margin="20" Text="{Binding Name}" FontSize="28" FontFamily="" TextColor="{StaticResource black}"/> 
+                          </Grid>
+                    </yummy:PancakeView>
+                   </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
