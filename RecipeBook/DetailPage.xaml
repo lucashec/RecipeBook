@@ -14,7 +14,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding ImageUrl}" Margin="0,-44,0,0" Aspect="AspectFill" Grid.ColumnSpan="2"/>
+        <Image Source="{Binding Image}" Margin="0,-44,0,0" Aspect="AspectFill" Grid.ColumnSpan="2"/>
 
         <yummy:PancakeView VerticalOptions="End" HeightRequest="120" Grid.ColumnSpan="2">
             <yummy:PancakeView.BackgroundGradientStops>
@@ -41,14 +41,18 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" FontSize="25" 
-                       TextColor="{StaticResource details_title}" Margin="24,24,24,8" Text="{Binding Name}" />
-
-                <Label Grid.Row="1" Margin="24,8" FontSize="15"
-                       TextColor="{StaticResource description}" FontFamily="Dosis-Regular" Text="{Binding Description}" />
-
-                <Label Grid.Row="2" FontSize="19" 
-                       TextColor="{StaticResource details_title}" Margin="24,8" Text="Ingredients" />
+                <StackLayout>
+                    <Label Grid.Row="0" FontSize="25" 
+                           TextColor="{StaticResource details_title}" Margin="24,24,24,8" Text="{Binding Title}" />
+                    <Label Grid.Row="1" Margin="24,8" FontSize="15"
+                           TextColor="{StaticResource description}" FontFamily="Dosis-Regular" Text="Ready In" />
+                    <Label Grid.Row="1" Margin="24,8" FontSize="15"
+                           TextColor="{StaticResource description}" FontFamily="Dosis-Regular" Text="{Binding ReadyInMinutes}" />
+                    <Label Grid.Row="2" FontSize="19" 
+                           TextColor="{StaticResource details_title}" Margin="24,8" Text="Serves" />
+                    <Label Grid.Row="2" FontSize="19" 
+                           TextColor="{StaticResource details_title}" Margin="24,8" Text="{Binding Servings}" />
+                </StackLayout>
 
                 <StackLayout Margin="24,8" Padding="12" Grid.Row="3" BackgroundColor="{StaticResource ingredient_list}" BindableLayout.ItemsSource="{Binding Ingredient}">
                     <BindableLayout.ItemTemplate>

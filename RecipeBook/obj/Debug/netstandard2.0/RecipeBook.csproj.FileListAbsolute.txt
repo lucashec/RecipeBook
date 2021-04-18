@@ -1,0 +1,16 @@
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\bin\Debug\netstandard2.0\Resources\topshape.svg
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\bin\Debug\netstandard2.0\RecipeBook.deps.json
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\bin\Debug\netstandard2.0\RecipeBook.dll
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\bin\Debug\netstandard2.0\ref\RecipeBook.dll
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\bin\Debug\netstandard2.0\RecipeBook.pdb
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\RecipeBook.csprojAssemblyReference.cache
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\DetailPage.xaml.g.cs
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\RecipeBook.AssemblyInfoInputs.cache
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\RecipeBook.AssemblyInfo.cs
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\RecipeBook.csproj.CoreCompileInputs.cache
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\RecipeBook.dll
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\ref\RecipeBook.dll
+C:\Users\nerdj\Source\Repos\RecipeBook\RecipeBook\obj\Debug\netstandard2.0\RecipeBook.pdb

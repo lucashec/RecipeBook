@@ -39,11 +39,11 @@
                              <RowDefinition Height="80"/>
                           </Grid.RowDefinitions>
 
-                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" Grid.RowSpan="2"/>
+                                <Image Source="{Binding Image}" Aspect="AspectFill" Grid.RowSpan="2"/>
 
                                 <sharpnado:MaterialFrame Grid.Row="1" MaterialBlurStyle="Light"/>
 
-                          <Label Grid.Row="1" Margin="20" Text="{Binding Name}" FontSize="28" FontFamily="" TextColor="{StaticResource black}"/> 
+                          <Label Grid.Row="1" Margin="20" Text="{Binding Title}" FontSize="28" FontFamily="" TextColor="{StaticResource black}"/> 
                           </Grid>
                     </yummy:PancakeView>
                    </StackLayout>

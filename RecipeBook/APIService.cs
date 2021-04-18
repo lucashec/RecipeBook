@@ -11,18 +11,35 @@ namespace RecipeBook
     public static class APIService
     {
         static HttpClient httpClient;
-        static List<Recipe> recipes;
+        //static List<Recipe> Recipes;
+
+        const string Url = "https://api.spoonacular.com/recipes/search/?query=pasta&apiKey=f639c84d524542179da437ba201a775e";
+
         public static async Task<List<Recipe>> GetRecipes()
         {
-            if (recipes != null) return recipes;
+            //if (recipes != null) return recipes;
             if(httpClient == null)
             {
                 httpClient = new HttpClient();
             }
-            var result = await httpClient.GetAsync("https://www.thewissen.io/pancakes.json");
-            var resultAsString = await result.Content.ReadAsStringAsync();
+            string rescontent = await httpClient.GetStringAsync(Url);
 
-            return JsonConvert.DeserializeObject<List<Recipe>>(resultAsString);
+
+            Response response = JsonConvert.DeserializeObject<Response>(rescontent);
+
+            foreach (Recipe r in response.Results)
+            {
+
+                string url = "https://spoonacular.com/recipeImages/" + r.Image;
+                r.Image = url;
+            }
+            
+
+            return response.Results;
+            
+            //var result = await httpClient.GetAsync("https://www.thewissen.io/pancakes.json");
+            //var resultAsString = await result.Content.ReadAsStringAsync();
+            //return JsonConvert.DeserializeObject<List<Recipe>>(resultAsString);
         }
     }
 }
