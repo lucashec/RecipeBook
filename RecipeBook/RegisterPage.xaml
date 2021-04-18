@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="RecipeBook.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nova Receita"
+                FontSize="20"
+                VerticalOptions="Center"
+                Margin="0,20,0,0"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource app_title}"
+                 />
+            <Entry Placeholder="Título" TextColor="{StaticResource app_title}"/>
+            <Entry Placeholder="Descrição" TextColor="{StaticResource app_title}"/>
+            <Entry Placeholder="Ingrediente 1"  TextColor="{StaticResource app_title}"/>
+            <Entry Placeholder="Ingrediente 2"  TextColor="{StaticResource app_title}"/>
+            <Entry Placeholder="Ingrediente 3"  TextColor="{StaticResource app_title}"/>
+            <Button Text="Criar" TextColor="{StaticResource app_title}" BackgroundColor="{StaticResource main_yellow}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

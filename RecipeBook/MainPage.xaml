@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:local ="clr-namespace:RecipeBook" 
              xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
              NavigationPage.HasNavigationBar="False"
              x:Class="RecipeBook.MainPage">
@@ -20,7 +19,7 @@
         <ff:SvgCachedImage Margin="-16,-160,-60, 0" Source="resource://RecipeBook.topshape.svg" HeightRequest="400" VerticalOptions="Start" Aspect="AspectFill" Grid.RowSpan="2"/>
         <Label Margin="32,0, 16,0" Text="Receitas" VerticalOptions="Center" VerticalTextAlignment="Center" TextColor="{StaticResource app_title}" FontSize="34" FontAttributes="Bold"/>
 
-       <!-- <Button Text="{x:Static local:IconFont.search}" FontFamily="Cooking" CornerRadius="18" Margin="-20,10,0,16" Grid.Column="1" VerticalOptions="End"  HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource white}"/> -->
+       <Button Text="+" FontSize="18" CornerRadius="20" Margin="-30,0,20,10" Grid.Column="1" VerticalOptions="End"  HeightRequest="40" WidthRequest="30" BackgroundColor="{StaticResource white}" Clicked="Button_Clicked"/> 
 
         <CollectionView Grid.Row="1" Grid.ColumnSpan="2">
             <CollectionView.ItemsLayout>

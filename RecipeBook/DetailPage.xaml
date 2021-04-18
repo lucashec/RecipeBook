@@ -48,7 +48,7 @@
                        TextColor="{StaticResource description}" FontFamily="Dosis-Regular" Text="{Binding Description}" />
 
                 <Label Grid.Row="2" FontSize="19" 
-                       TextColor="{StaticResource details_title}" Margin="24,8" Text="Ingredients" />
+                       TextColor="{StaticResource details_title}" Margin="24,8" Text="Ingredientes" />
 
                 <StackLayout Margin="24,8" Padding="12" Grid.Row="3" BackgroundColor="{StaticResource ingredient_list}" BindableLayout.ItemsSource="{Binding Ingredient}">
                     <BindableLayout.ItemTemplate>
