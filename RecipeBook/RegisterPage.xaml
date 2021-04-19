@@ -12,12 +12,21 @@
                 HorizontalTextAlignment="Center"
                 TextColor="{StaticResource app_title}"
                  />
-            <Entry Placeholder="Título" TextColor="{StaticResource app_title}"/>
-            <Entry Placeholder="Descrição" TextColor="{StaticResource app_title}"/>
-            <Entry Placeholder="Ingrediente 1"  TextColor="{StaticResource app_title}"/>
-            <Entry Placeholder="Ingrediente 2"  TextColor="{StaticResource app_title}"/>
-            <Entry Placeholder="Ingrediente 3"  TextColor="{StaticResource app_title}"/>
-            <Button Text="Criar" TextColor="{StaticResource app_title}" BackgroundColor="{StaticResource main_yellow}" />
+            <Entry x:Name="txtTitle" Placeholder="Título" TextColor="{StaticResource app_title}"/>
+            <Entry x:Name="txtDesc" Placeholder="Descrição" TextColor="{StaticResource app_title}"/>
+            <Entry x:Name="txtIng1" Placeholder="Ingrediente 1"  TextColor="{StaticResource app_title}"/>
+            <Entry x:Name="txtIng2" Placeholder="Ingrediente 2"  TextColor="{StaticResource app_title}"/>
+            <Entry x:Name="txtIng3" Placeholder="Ingrediente 3"  TextColor="{StaticResource app_title}"/>
+            <Button  
+                Text="Adicionar arquivo" TextColor="{StaticResource app_title}" 
+                x:Name="addFile" Clicked="addFile_Clicked"
+                BackgroundColor="{StaticResource main_yellow}" />
+            <Button 
+                Text="Criar" 
+                x:Name="create" Clicked="create_Clicked"
+                TextColor="{StaticResource app_title}" 
+                BackgroundColor="{StaticResource main_yellow}" 
+                />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
