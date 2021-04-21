@@ -2,10 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             NavigationPage.HasNavigationBar="False"
-    x:Class="RecipeBook.DetailPage">
-    
-    <Grid BindableLayout.ItemsSource="{Binding .}">
+             NavigationPage.HasNavigationBar="True"
+    x:Class="RecipeBook.DetailPageCustom">
+    <Grid x:Name="gridRecipes" BindableLayout.ItemsSource="{Binding .}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
@@ -14,7 +13,6 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        
         <Image Source="{Binding ImageUrl}" Margin="0,-44,0,0" Aspect="AspectFill" Grid.ColumnSpan="2"/>
 
         <yummy:PancakeView VerticalOptions="End" HeightRequest="120" Grid.ColumnSpan="2">
@@ -42,8 +40,15 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" FontSize="25" 
-                       TextColor="{StaticResource details_title}" Margin="24,24,24,8" Text="{Binding Name}" />
+                <StackLayout Grid.Row="1" Orientation="Horizontal">
+
+                    <Label HorizontalOptions="StartAndExpand" FontSize="25" 
+                           TextColor="{StaticResource details_title}" Text="{Binding Name}" />
+
+                    <Button Clicked="Delete_RecipeModel" Text="Delete" VerticalOptions="Center" HorizontalOptions="End" FontSize="13" CornerRadius="20" TextColor="White" BackgroundColor="Red"/>
+                    <Button Clicked="Update_RecipeModel" Text="Update" VerticalOptions="Center" HorizontalOptions="End" FontSize="13" CornerRadius="20" TextColor="White" BackgroundColor="#999"/>
+
+                </StackLayout>
 
                 <Label Grid.Row="1" Margin="24,8" FontSize="15"
                        TextColor="{StaticResource description}" FontFamily="Dosis-Regular" Text="{Binding Description}" />
@@ -51,16 +56,16 @@
                 <Label Grid.Row="2" FontSize="19" 
                        TextColor="{StaticResource details_title}" Margin="24,8" Text="Ingredientes" />
 
-                <StackLayout Margin="24,8" Padding="12" Grid.Row="3" BackgroundColor="{StaticResource ingredient_list}" BindableLayout.ItemsSource="{Binding Ingredients}">
-                    <BindableLayout.ItemTemplate>
+                <ListView x:Name="slIngredients" Margin="24,8" Grid.Row="3" BackgroundColor="{StaticResource ingredient_list}">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
-                                <Label Text="{Binding Name}" TextColor="{StaticResource ingredient_name}" FontFamily="Dosis-Bold" />
-                                <Label HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Text="{Binding Uom}" TextColor="{StaticResource ingredient_name}" />
-                            </StackLayout>
+                            <TextCell
+                                Text="{Binding Name}"
+                                Detail="{Binding Uom}"
+                             />
                         </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
+                    </ListView.ItemTemplate>
+                </ListView>
 
             </Grid>
         </yummy:PancakeView>

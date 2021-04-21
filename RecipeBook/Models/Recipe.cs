@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,11 +29,15 @@ namespace RecipeBook.Models
 
     public partial class Ingredient
     {
+        [JsonProperty("id"), PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         [JsonProperty("uom")]
         public string Uom { get; set; }
 
         [JsonProperty("ingredient")]
         public string Name { get; set; }
+        [JsonProperty("recipe")]
+        public int RecipeId { get; set; }
     }
 
 

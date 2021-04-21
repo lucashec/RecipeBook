@@ -15,6 +15,7 @@ namespace RecipeBook
     {
         public DetailPage(Recipe selectItem)
         {
+
             InitializeComponent();
 
             BindingContext = selectItem;

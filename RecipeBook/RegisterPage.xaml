@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="True"
+             x:Class="RecipeBook.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nova Receita"
+                FontSize="20"
+                VerticalOptions="Center"
+                Margin="0,20,0,0"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource app_title}"
+                 />
+            <Entry x:Name="txtTitle" Placeholder="Título" TextColor="{StaticResource app_title}"/>
+            <Entry x:Name="txtDesc" Placeholder="Descrição" TextColor="{StaticResource app_title}"/>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="ingName" Placeholder="Nome" TextColor="{StaticResource app_title}"/>
+                    <Entry x:Name="ingUom" Placeholder="Quantidade" TextColor="{StaticResource app_title}"/>
+                    <Button  
+                        Text="Add" TextColor="{StaticResource app_title}" 
+                        Clicked="add_ingredient"
+                        BackgroundColor="{StaticResource main_yellow}" />
+                </StackLayout>
+            </StackLayout>
+            <ListView x:Name="lvIngredients" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell
+                            Text="{Binding Name}"
+                            Detail="{Binding Uom}"
+                            />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button  
+                Text="Adicionar arquivo" TextColor="{StaticResource app_title}" 
+                x:Name="addFile" Clicked="addFile_Clicked"
+                BackgroundColor="{StaticResource main_yellow}" />
+            <Button 
+                Text="Criar" 
+                x:Name="create" Clicked="create_Clicked"
+                TextColor="{StaticResource app_title}" 
+                BackgroundColor="{StaticResource main_yellow}" 
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
