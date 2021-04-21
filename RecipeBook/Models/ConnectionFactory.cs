@@ -3,30 +3,114 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace RecipeBook.Models
 {
-    public class ConnectionFactory
+    public static class ConnectionFactory
     {
-        public SQLiteConnection connection;
-        public ConnectionFactory()
+        static SQLiteAsyncConnection connection;
+        static async Task Init()
         {
+            if (connection != null)
+                return;
+
             var folder = new LocalRootFolder();
             var file = folder.CreateFile("recipeBook", PCLExt.FileStorage.CreationCollisionOption.OpenIfExists);
-            connection = new SQLiteConnection(file.Path);
-            connection.CreateTable<RecipeModel>();
+            connection = new SQLiteAsyncConnection(file.Path);
+            await connection.CreateTableAsync<Ingredient>();
+
+            Console.WriteLine("Ingredient Table Created");
+
+            await connection.CreateTableAsync<RecipeModel>();
+
+            Console.WriteLine("RecipeModel Table Created");
+
         }
-        public void insert<T>(T model)
+        public static async Task<List<RecipeModel>> GetRecipes()
         {
-            connection.Insert(model);
+            await Init();
+
+            var recipes = await connection.Table<RecipeModel>().ToListAsync();
+            return recipes;
         }
-        public void update<T>(T model)
+
+        public static async Task<int> InsertRecipe(RecipeModel recipe)
         {
-            connection.Update(model);
+            await Init();
+
+            var id = await connection.InsertAsync(recipe);
+            return id;
         }
-        public void dnsert<T>(T model)
+        public static async Task<int> InsertIngredient(Ingredient ingredient)
         {
-            connection.Delete(model);
+            await Init();
+
+            var id = await connection.InsertAsync(ingredient);
+            return id;
+        }
+        public static async Task Delete_AllIngredients()
+        {
+
+            await Init();
+            await connection.DropTableAsync<Ingredient>();
+
+        }
+        public static async void Delete_Ingredient(Ingredient ingredient)
+        {
+            await Init();
+           
+            await connection.DeleteAsync(ingredient);
+            
+        }
+
+        public static async Task<List<Ingredient>> GetIngredientsById(int id)
+        {
+
+            await Init();
+
+            List<Ingredient> ingredients = await connection.QueryAsync<Ingredient>("select * from Ingredient where RecipeId=?", id);
+            
+            return ingredients;
+        }
+        public static async Task Delete_AllRecipeModel()
+        {
+
+            await Init();
+
+            await connection.DeleteAllAsync<RecipeModel>();
+            
+        }
+
+        public static async Task Delete_RecipeModel(RecipeModel recipe)
+        {
+
+            await Init();
+
+            try
+            {
+                await connection.DeleteAsync<RecipeModel>(recipe.Id);
+            }
+            catch
+            {
+                return;
+            }
+
+        }
+        public static async Task Update_RecipeModel(RecipeModel recipe)
+        {
+
+            await Init();
+
+            try
+            {
+                await connection.UpdateAsync(recipe);
+            }
+            catch
+            {
+                return;
+            }
+
         }
     }
 }

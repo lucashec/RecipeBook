@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
 
 namespace RecipeBook.Models
 {
-    class RecipeModel
+    public class RecipeModel
     {
         [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public string ing1 { get; set; }
-        public string ing2 { get; set; }
-        public string ing3 { get; set; }
-        public string image { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
     }
 }

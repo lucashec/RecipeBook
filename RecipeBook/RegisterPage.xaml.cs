@@ -1,6 +1,7 @@
 ﻿using RecipeBook.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,11 @@ namespace RecipeBook
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
-        public ConnectionFactory connection;
+        public ObservableCollection<Ingredient> ingredients;
         public RegisterPage()
         {
             InitializeComponent();
-            connection = new ConnectionFactory(); 
+            
         }
 
         private async void addFile_Clicked(object sender, EventArgs e)
@@ -34,45 +35,72 @@ namespace RecipeBook
             }
         }
 
-        private void create_Clicked(object sender, EventArgs e)
+        private void add_ingredient(object sender, EventArgs e)
         {
+
+            if (ingredients == null)
+            {
+                Console.WriteLine("null");
+                ingredients = new ObservableCollection<Ingredient>()
+                {
+                    new Ingredient()
+                    {
+                        Name = ingName.Text,
+                        Uom = ingUom.Text
+                    }
+                };
+            } else {
+                Console.WriteLine("not null");
+
+                ingredients.Add(new Ingredient()
+                {
+                    Name = ingName.Text,
+                    Uom = ingUom.Text
+                });
+            
+            }
+            lvIngredients.ItemsSource = ingredients;
+
+        }
+
+        private async void create_Clicked(object sender, EventArgs e)
+        {
+            
             try
             {
                 if (string.IsNullOrEmpty(txtTitle.Text))
                 {
-                    DisplayAlert("Error", "Insira o titulo", "OK");
+                    await DisplayAlert("Error", "Insira o titulo", "OK");
                 }
                 if (string.IsNullOrEmpty(txtDesc.Text))
                 {
-                    DisplayAlert("Error", "Insira o descrição", "OK");
+                    await DisplayAlert("Error", "Insira o descrição", "OK");
                 }
-                if (string.IsNullOrEmpty(txtIng1.Text))
-                {
-                    DisplayAlert("Error", "Insira o ingrediente 1", "OK");
-                }
-                if (string.IsNullOrEmpty(txtIng2.Text))
-                {
-                    DisplayAlert("Error", "Insira o ingrediente 2", "OK");
-                }
-                if (string.IsNullOrEmpty(txtIng3.Text))
-                {
-                    DisplayAlert("Error", "Insira o ingrediente 3", "OK");
-                }
+
                 RecipeModel recipe = new RecipeModel()
                 {
-                    title = txtTitle.Text,
-                    description = txtDesc.Text,
-                    ing1 = txtIng1.Text,
-                    ing2 = txtIng2.Text,
-                    ing3 = txtIng3.Text,
+                    Title = txtTitle.Text,
+                    Description = txtDesc.Text,    
                 };
-                connection.insert(recipe);
-                DisplayAlert("Success", "Inserido com sucesso", "OK");
+                
+                
+                await ConnectionFactory.InsertRecipe(recipe);
+                
+                foreach(Ingredient ingredient in ingredients)
+                {
+                    ingredient.RecipeId = recipe.Id;
+                    await ConnectionFactory.InsertIngredient(ingredient);
+                }
+                
+
+
+                await DisplayAlert("Success", "Inserido com sucesso", "OK");
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", ex.Message , "OK");
+                await DisplayAlert("Error", ex.Message , "OK");
             }
+            
         }
     }
 }

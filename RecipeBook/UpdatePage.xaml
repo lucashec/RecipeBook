@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="True"
-             x:Class="RecipeBook.RegisterPage">
+             x:Class="RecipeBook.UpdatePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Nova Receita"
+            <Label Text="Editar Receita"
                 FontSize="20"
                 VerticalOptions="Center"
                 Margin="0,20,0,0"
@@ -27,10 +27,23 @@
             <ListView x:Name="lvIngredients" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell
-                            Text="{Binding Name}"
-                            Detail="{Binding Uom}"
-                            />
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" HorizontalOptions="Start"></Label>
+                                    <Label Text="{Binding Uom}" HorizontalOptions="Start"></Label>
+                                    <Button
+                                        CommandParameter="{Binding Name}"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="Delete" TextColor="White" 
+                                        Clicked="Delete_Ingredient"
+                                        BackgroundColor="Red" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -39,8 +52,8 @@
                 x:Name="addFile" Clicked="addFile_Clicked"
                 BackgroundColor="{StaticResource main_yellow}" />
             <Button 
-                Text="Criar" 
-                x:Name="create" Clicked="create_Clicked"
+                Text="Salvar" 
+                x:Name="create" Clicked="edited_Clicked"
                 TextColor="{StaticResource app_title}" 
                 BackgroundColor="{StaticResource main_yellow}" 
                 />

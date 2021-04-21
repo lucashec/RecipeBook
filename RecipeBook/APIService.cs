@@ -11,10 +11,10 @@ namespace RecipeBook
     public static class APIService
     {
         static HttpClient httpClient;
-        static List<Recipe> recipes;
+        //static List<Recipe> recipes;
         public static async Task<List<Recipe>> GetRecipes()
         {
-            if (recipes != null) return recipes;
+            //if (recipes != null) return recipes;
             if(httpClient == null)
             {
                 httpClient = new HttpClient();
