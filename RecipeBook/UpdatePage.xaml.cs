@@ -122,7 +122,7 @@ namespace RecipeBook
 
                 await DisplayAlert("Success", "Atualizado com sucesso", "OK");
 
-                await Navigation.PushAsync(new DetailPageCustom(recipe));
+                //await Navigation.PushAsync(new DetailPageCustom(recipe));
 
             }
             catch (Exception ex)

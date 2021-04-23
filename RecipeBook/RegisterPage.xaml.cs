@@ -95,6 +95,9 @@ namespace RecipeBook
 
 
                 await DisplayAlert("Success", "Inserido com sucesso", "OK");
+
+                //await Navigation.PushAsync(new RecipesListView());
+
             }
             catch (Exception ex)
             {

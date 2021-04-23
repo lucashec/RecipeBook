@@ -29,7 +29,7 @@
 
         <CollectionView Grid.Row="1" Grid.ColumnSpan="2">
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical"/>
+                <LinearItemsLayout Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
         </CollectionView>
 
@@ -38,13 +38,11 @@
                 <DataTemplate>
                     <StackLayout Padding="16,0,0,0">
                         <yummy:PancakeView CornerRadius="30">
-                            <Grid HeightRequest="400" Margin="8, 0, 20 ,16 ">
+                            <Grid Margin="8, 0, 20 ,16 ">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="80"/>
                                 </Grid.RowDefinitions>
-
-                                <Image Source="{Binding Image}" Aspect="AspectFill" Grid.RowSpan="2"/>
 
                                 <sharpnado:MaterialFrame Grid.Row="1" MaterialBlurStyle="Light"/>
 
@@ -54,9 +52,7 @@
                            TextColor="{StaticResource details_title}" Margin="24,24,24,8" Text="{Binding Title}" />
 
                                 </StackLayout>
-                                <ListView>
-                                    
-                                </ListView>
+
                             </Grid>
                         </yummy:PancakeView>
                     </StackLayout>
